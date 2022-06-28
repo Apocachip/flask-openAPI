@@ -38,11 +38,10 @@ class NaverSearchResource(Resource) :
         display = request.args['display']
         sort = request.args['sort']
 
+        # 2. 네이버 API를 호출한다.
         data = {'query' : query, 'display' : display, 'sort' : sort}
 
-        # 2. 네이버 API를 호출한다.
         headers = {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Naver-Client-Id' : Config.NAVER_CLINET_ID, 'X-Naver-Client-Secret' : Config.NAVER_CLINET_SECRET}
-
 
         res = requests.get(Config.NAVER_NEWS_SEARCH_URL, data, headers= headers)
 
